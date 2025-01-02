@@ -22,8 +22,24 @@ public class NeoSubsystem extends SubsystemBase {
 
     CANSparkMax neoMotor2 = new CANSparkMax(Constants.NeoConstants.kNeoMotorCanId, MotorType.kBrushless);
     RelativeEncoder neoEncoder2 = neoMotor2.getEncoder();
-  }
 
+    neoMotor1.restoreFactoryDefaults();
+    neoMotor1.setInverted(false);
+    neoMotor1.setIdleMode(Constants.NeoConstants.kNeoIdleMode);
+    neoMotor1.setSmartCurrentLimit(30);
+    neoMotor1.enableVoltageCompensation(12.0);
+    neoMotor1.burnFlash();
+
+    neoMotor2.restoreFactoryDefaults();
+    neoMotor2.setInverted(false);
+    neoMotor2.setIdleMode(Constants.NeoConstants.kNeoIdleMode);
+    neoMotor2.setSmartCurrentLimit(30);
+    neoMotor2.enableVoltageCompensation(12.0);
+    neoMotor2.burnFlash();
+
+    resetEncoders();
+  }
+ 
   /**
    * Command factory method.
    *
