@@ -4,19 +4,20 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
+import 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class NeoSubsystem extends SubsystemBase {
-  /** Creates a new subsystem. */
-  public NeoSubsystem() {}
+public class VictorSubsystem extends SubsystemBase {
+  /** Creates a new ExampleSubsystem. */
+  public VictorSubsystem() {}
 
   /**
-   * Command factory method.
+   * Example command factory method.
    *
    * @return a command
    */
-  public Command methodCommand() {
+  public Command exampleMethodCommand() {
     // Inline construction of command goes here.
     // Subsystem::RunOnce implicitly requires `this` subsystem.
     return runOnce(
@@ -30,7 +31,7 @@ public class NeoSubsystem extends SubsystemBase {
    *
    * @return value of some boolean subsystem state, such as a digital sensor.
    */
-  public boolean Condition() {
+  public boolean exampleCondition() {
     // Query some boolean state, such as a digital sensor.
     return false;
   }
