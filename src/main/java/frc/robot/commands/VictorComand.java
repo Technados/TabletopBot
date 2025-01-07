@@ -8,7 +8,7 @@ import frc.robot.subsystems.VictorSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /** An example command that uses an example subsystem. */
-public class VictorCommand extends Command {
+public class VictorComand extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final VictorSubsystem m_subsystem;
 
@@ -17,7 +17,7 @@ public class VictorCommand extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public VictorCommand(VictorSubsystem subsystem) {
+  public VictorComand(VictorSubsystem subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);

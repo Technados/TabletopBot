@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+
 import com.revrobotics.CANSparkBase;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
@@ -15,20 +16,26 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class NeoSubsystem extends SubsystemBase {
   /** Creates a new subsystem. */
   
-  public NeoSubsystem() {
+  private static NeoSubsystem instance;
+  
     // Initialize motor
-    CANSparkMax neoMotor1 = new CANSparkMax(Constants.NeoConstants.kNeoMotorCanId, MotorType.kBrushless);
-    RelativeEncoder neoEncoder1 = neoMotor1.getEncoder();
+    private CANSparkMax neoMotor1 = new CANSparkMax(Constants.NeoConstants.kNeoMotorCanId, MotorType.kBrushless);
+    private RelativeEncoder neoEncoder1 = neoMotor1.getEncoder();
 
-    CANSparkMax neoMotor2 = new CANSparkMax(Constants.NeoConstants.kNeoMotorCanId, MotorType.kBrushless);
-    RelativeEncoder neoEncoder2 = neoMotor2.getEncoder();
+    private CANSparkMax neoMotor2 = new CANSparkMax(Constants.NeoConstants.kNeoMotorCanId, MotorType.kBrushless);
+    private RelativeEncoder neoEncoder2 = neoMotor2.getEncoder();
 
+    private float neospeed = 0.30f;
+
+    public NeoSubsystem(){
     neoMotor1.restoreFactoryDefaults();
     neoMotor1.setInverted(false);
     neoMotor1.setIdleMode(Constants.NeoConstants.kNeoIdleMode);
     neoMotor1.setSmartCurrentLimit(30);
     neoMotor1.enableVoltageCompensation(12.0);
     neoMotor1.burnFlash();
+
+    neoEncoder1.setPosition(0);
 
     neoMotor2.restoreFactoryDefaults();
     neoMotor2.setInverted(false);
@@ -37,7 +44,17 @@ public class NeoSubsystem extends SubsystemBase {
     neoMotor2.enableVoltageCompensation(12.0);
     neoMotor2.burnFlash();
 
-    resetEncoders();
+    neoEncoder2.setPosition(0);
+  }
+
+  // spin motor1 forward
+  public void startneoMotor1(){
+    neoMotor1.set(neospeed);
+  }
+
+  // stop neo motor
+  public void stopneoMotor1(){
+    neoMotor1.set(0.0);
   }
  
   /**
