@@ -9,6 +9,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import frc.robot.Constants;
+import pabeles.concurrency.ConcurrencyOps.Reset;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -21,8 +22,9 @@ public class NeoSubsystem extends SubsystemBase {
     RelativeEncoder neoEncoder1 = neoMotor1.getEncoder();
 
     CANSparkMax neoMotor2 = new CANSparkMax(Constants.NeoConstants.kNeoMotorCanId, MotorType.kBrushless);
-    RelativeEncoder neoEncoder2 = neoMotor2.getEncoder();
+     RelativeEncoder neoEncoder2 = neoMotor2.getEncoder();
 
+     
     neoMotor1.restoreFactoryDefaults();
     neoMotor1.setInverted(false);
     neoMotor1.setIdleMode(Constants.NeoConstants.kNeoIdleMode);
@@ -30,6 +32,8 @@ public class NeoSubsystem extends SubsystemBase {
     neoMotor1.enableVoltageCompensation(12.0);
     neoMotor1.burnFlash();
 
+    //resetEncoders();
+    
     neoMotor2.restoreFactoryDefaults();
     neoMotor2.setInverted(false);
     neoMotor2.setIdleMode(Constants.NeoConstants.kNeoIdleMode);
@@ -37,7 +41,7 @@ public class NeoSubsystem extends SubsystemBase {
     neoMotor2.enableVoltageCompensation(12.0);
     neoMotor2.burnFlash();
 
-    resetEncoders();
+    //resetEncoders();
   }
  
   /**
