@@ -4,13 +4,13 @@
 
 package frc.robot.subsystems;
 
-
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+//import com.revrobotics.CANSparkMax.ControlType;
 
 public class NeoSubsystem extends SubsystemBase {
   /** Creates a new subsystem. */
@@ -27,24 +27,30 @@ public class NeoSubsystem extends SubsystemBase {
     private float neospeed = 0.30f;
 
     public NeoSubsystem(){
-    neoMotor1.restoreFactoryDefaults();
-    neoMotor1.setInverted(false);
-    neoMotor1.setIdleMode(Constants.NeoConstants.kNeoIdleMode);
-    neoMotor1.setSmartCurrentLimit(30);
-    neoMotor1.enableVoltageCompensation(12.0);
-    neoMotor1.burnFlash();
+      neoMotor1.restoreFactoryDefaults();
+      neoMotor1.setInverted(false);
+      neoMotor1.setIdleMode(Constants.NeoConstants.kNeoIdleMode);
+      neoMotor1.setSmartCurrentLimit(30);
+      neoMotor1.enableVoltageCompensation(12.0);
+      neoMotor1.burnFlash();
 
-    neoEncoder1.setPosition(0);
+      neoEncoder1.setPosition(0);
 
-    neoMotor2.restoreFactoryDefaults();
-    neoMotor2.setInverted(false);
-    neoMotor2.setIdleMode(Constants.NeoConstants.kNeoIdleMode);
-    neoMotor2.setSmartCurrentLimit(30);
-    neoMotor2.enableVoltageCompensation(12.0);
-    neoMotor2.burnFlash();
+      neoMotor2.restoreFactoryDefaults();
+      neoMotor2.setInverted(false);
+      neoMotor2.setIdleMode(Constants.NeoConstants.kNeoIdleMode);
+      neoMotor2.setSmartCurrentLimit(30);
+      neoMotor2.enableVoltageCompensation(12.0);
+      neoMotor2.burnFlash();
 
-    neoEncoder2.setPosition(0);
-  }
+      neoEncoder2.setPosition(0);
+    }
+  
+  // Method to set motor velocity directly
+  //public void setVelocity(double velocity) {
+    // Set the motor velocity in RPM using ControlType.kVelocity
+    //neoMotor1.set(ControlType.kVelocity, velocity);  // velocity in RPM
+//}
 
   // Spin motor1 forward
   public void startneoMotor1(){
