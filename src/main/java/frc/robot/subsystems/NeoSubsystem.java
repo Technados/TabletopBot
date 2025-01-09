@@ -5,7 +5,6 @@
 package frc.robot.subsystems;
 
 
-import com.revrobotics.CANSparkBase;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
@@ -19,10 +18,10 @@ public class NeoSubsystem extends SubsystemBase {
   private static NeoSubsystem instance;
   
     // Initialize motor
-    private CANSparkMax neoMotor1 = new CANSparkMax(Constants.NeoConstants.kNeoMotorCanId, MotorType.kBrushless);
+    private CANSparkMax neoMotor1 = new CANSparkMax(Constants.NeoConstants.kNeoMotor1CanId, MotorType.kBrushless);
     private RelativeEncoder neoEncoder1 = neoMotor1.getEncoder();
 
-    private CANSparkMax neoMotor2 = new CANSparkMax(Constants.NeoConstants.kNeoMotorCanId, MotorType.kBrushless);
+    private CANSparkMax neoMotor2 = new CANSparkMax(Constants.NeoConstants.kNeoMotor2CanId, MotorType.kBrushless);
     private RelativeEncoder neoEncoder2 = neoMotor2.getEncoder();
 
     private float neospeed = 0.30f;

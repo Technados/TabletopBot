@@ -20,7 +20,8 @@ public final class Constants {
   }
 
   public static final class NeoConstants {
-    public static final int kNeoMotorCanId = 11;
+    public static final int kNeoMotor1CanId = 4;
+    public static final int kNeoMotor2CanId = 3;
     public static final IdleMode kNeoIdleMode = IdleMode.kBrake;}
 
 }
