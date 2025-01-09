@@ -63,6 +63,10 @@ public class RobotContainer {
     new JoystickButton(m_driverController, Button.kA.value)
                                     .onTrue(new InstantCommand(() -> m_neo.startneoMotor1(), m_neo))
                                 .onFalse(new InstantCommand(() -> m_neo.stopneoMotor1(), m_neo));
+
+    new JoystickButton(m_driverController, Button.kX.value)
+                                    .onTrue(new InstantCommand(() -> m_neo.startneoMotor2(), m_neo))
+                                .onFalse(new InstantCommand(() -> m_neo.stopneoMotor2(), m_neo));
   }
 
   /**

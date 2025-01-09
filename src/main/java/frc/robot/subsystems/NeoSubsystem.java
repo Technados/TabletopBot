@@ -46,15 +46,27 @@ public class NeoSubsystem extends SubsystemBase {
     neoEncoder2.setPosition(0);
   }
 
-  // spin motor1 forward
+  // Spin motor1 forward
   public void startneoMotor1(){
     neoMotor1.set(neospeed);
   }
 
-  // stop neo motor
+
+  // Spin motor2 forward
+  public void startneoMotor2(){
+    neoMotor2.set(neospeed);
+  }
+
+  // Stop Neo motor1
   public void stopneoMotor1(){
     neoMotor1.set(0.0);
   }
+
+  //Stop Neo motor2
+  public void stopneoMotor2(){
+    neoMotor2.set(0.0);
+  }
+
  
   /**
    * Command factory method.
