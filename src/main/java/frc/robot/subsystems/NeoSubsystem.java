@@ -10,7 +10,7 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-//import com.revrobotics.CANSparkMax.ControlType;
+import com.revrobotics.CANSparkMax.ControlType;
 
 public class NeoSubsystem extends SubsystemBase {
   /** Creates a new subsystem. */
@@ -47,10 +47,10 @@ public class NeoSubsystem extends SubsystemBase {
     }
   
   // Method to set motor velocity directly
-  //public void setVelocity(double velocity) {
+  public void setVelocity(double velocity) {
     // Set the motor velocity in RPM using ControlType.kVelocity
-    //neoMotor1.set(ControlType.kVelocity, velocity);  // velocity in RPM
-//}
+    neoMotor1.set(ControlType.kVelocity, velocity);  // velocity in RPM
+}
 
   // Spin motor1 forward
   public void startneoMotor1(){
