@@ -12,26 +12,41 @@ import com.revrobotics.CANSparkBase.ControlType;
 
 // This Subsystem will act as a Shooter Subsystem with Volatge Compensation
 
-public class ShooterSubsystem {
-
+public class ShooterSubsystem extends SubsystemBase {
     private final CANSparkMax ShooterMotor;
+    private final RelativeEncoder ShooterEncoder;
     private final SparkPIDController pidController;
-    private final double kP = 0.1 , kI = 0.0 , kD= 0.0 , kF = 0.0002;
-    //Tune values later
-    private final double targetVelocityRPM = 4500.0; 
-    //Make desired RPM
-
-    //private static ShooterSubsystem instance;
 
     public ShooterSubsystem() {
         ShooterMotor = new CANSparkMax(3, MotorType.kBrushless);
+        ShooterEncoder = ShooterMotor.getEncoder();
+        SparkPIDController ShooterPIDController = ShooterMotor.getPIDController();
+
+        //Define PID coeficiants
+        double kP = 0.1;
+        double kI = 0.0; 
+        double kD= 0.0; 
+    //Tune values later
+
+        // Set PID coeficiants
+       pidController.setP(kP);
+       pidController.setI(kI);
+       pidController.setD(kD);
+
+    double targetVelocityRPM = 4500.0; 
+    //Make desired RPM
+        pidController.setReference(targetVelocityRPM, CANSparkMax.ControlType.kVelocity);
+    //private static ShooterSubsystem instance;
+
+    
+        
         ShooterMotor.setSmartCurrentLimit(30);
         ShooterMotor.enableVoltageCompensation(12.0);
     
 
     // Initialize motor
     CANSparkMax ShooterMotor = new CANSparkMax(Constants.ShooterConstants.kShooterMotorCanId, MotorType.kBrushless);
-    RelativeEncoder ShooterEncoder = ShooterMotor.getEncoder();
+    
     
    
 
@@ -54,7 +69,7 @@ public class ShooterSubsystem {
     pidController.setP(kP);
     pidController.setI(kI);
     pidController.setD(kD);
-    pidController.setFF(kF);
+    //pidController.setFF(kF);
     //FF stands for FreeForward this helps maintain the speed
     }
   // Spin ShooterMotor forward
