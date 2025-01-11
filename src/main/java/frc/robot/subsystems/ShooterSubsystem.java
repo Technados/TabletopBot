@@ -18,24 +18,26 @@ public class ShooterSubsystem extends SubsystemBase {
     private static final double kI = 0.001;
     private static final double kD = 1.0;
     private static final double kFF = 45;
+    public static final int ShooterMotorCanId = 3;
     private final CANSparkMax ShooterMotor;
     private final RelativeEncoder ShooterEncoder;
-    private final SparkPIDController pidController;
+    private  SparkPIDController ShooterpidController;
 
     public ShooterSubsystem() {
+        super();
         ShooterMotor = new CANSparkMax(Constants.ShooterConstants.kShooterMotorCanId, MotorType.kBrushless);
         ShooterEncoder = ShooterMotor.getEncoder();
         SparkPIDController ShooterPIDController = ShooterMotor.getPIDController();
 
         // Set PID coeficiants
-       pidController.setP(kP);
-       pidController.setI(kI);
-       pidController.setD(kD);
-       pidController.setFF(kFF);
+       ShooterPIDController.setP(kP);
+       ShooterPIDController.setI(kI);
+       ShooterPIDController.setD(kD);
+       ShooterPIDController.setFF(kFF);
     }
 
     public void setShooterVelocity(double targetVelocityRPM){
-        pidController.setReference(targetVelocityRPM, CANSparkMax.ControlType.kVelocity);
+        ShooterpidController.setReference(targetVelocityRPM, CANSparkMax.ControlType.kVelocity);
     } 
 
     public void log() {
@@ -79,7 +81,7 @@ public class ShooterSubsystem extends SubsystemBase {
     //}
   // Spin ShooterMotor forward
   public void startShooterMotor(){
-    pidController.setReference(kFF, ControlType.kVelocity);
+    ShooterpidController.setReference(kFF, ControlType.kVelocity);
     //Maintain target RPM
   }
 
