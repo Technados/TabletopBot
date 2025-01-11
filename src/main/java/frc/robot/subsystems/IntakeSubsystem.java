@@ -10,18 +10,20 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import com.revrobotics.CANSparkMax.ControlType;
+import com.revrobotics.CANSparkBase.ControlType;
 
-public class NeoSubsystem extends SubsystemBase {
+//This SubSystem would act as an intake SubSytem with Current Limiting
+
+public class IntakeSubsystem extends SubsystemBase {
   /** Creates a new subsystem. */
   
-  private static NeoSubsystem instance;
+  private static IntakeSubsystem instance;
   
     // Initialize motor
-    private CANSparkMax neoMotor1 = new CANSparkMax(Constants.NeoConstants.kNeoMotor1CanId, MotorType.kBrushless);
+    private CANSparkMax IntakeMotor1 = new CANSparkMax(Constants.NeoConstants.kNeoMotor1CanId, MotorType.kBrushless);
     private RelativeEncoder neoEncoder1 = neoMotor1.getEncoder();
 
-    private CANSparkMax neoMotor2 = new CANSparkMax(Constants.NeoConstants.kNeoMotor2CanId, MotorType.kBrushless);
+    private CANSparkMax IntakeMotor2 = new CANSparkMax(Constants.NeoConstants.kNeoMotor2CanId, MotorType.kBrushless);
     private RelativeEncoder neoEncoder2 = neoMotor2.getEncoder();
 
     private float neospeed = 0.30f;
@@ -46,11 +48,7 @@ public class NeoSubsystem extends SubsystemBase {
       neoEncoder2.setPosition(0);
     }
   
-  // Method to set motor velocity directly
-  public void setVelocity(double velocity) {
-    // Set the motor velocity in RPM using ControlType.kVelocity
-    neoMotor1.set(ControlType.kVelocity, velocity);  // velocity in RPM
-}
+
 
   // Spin motor1 forward
   public void startneoMotor1(){
@@ -73,7 +71,11 @@ public class NeoSubsystem extends SubsystemBase {
     neoMotor2.set(0.0);
   }
 
- 
+ //Return Output Current
+  public double getneoMotor1Current(){
+    return neoMotor1.getOutputCurrent();
+  }
+
   /**
    * Command factory method.
    *
