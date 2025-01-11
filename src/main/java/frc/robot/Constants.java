@@ -19,10 +19,14 @@ public final class Constants {
     public static final int kDriverControllerPort = 0;
   }
 
-  public static final class NeoConstants {
-    public static final int kNeoMotor1CanId = 4;
-    public static final int kNeoMotor2CanId = 3;
-    public static final IdleMode kNeoIdleMode = IdleMode.kBrake;}
+  public static final class IntakeConstants {
+    public static final int kIntakeMotorCanId = 4;
+    public static final IdleMode kIntakeIdleMode = IdleMode.kBrake;}
+
+    public static final class ShooterConstants {
+    public static final int kShooterMotorCanId = 3;
+    public static final IdleMode kShooterIdleMode = IdleMode.kBrake;}
+  
 
 }
 

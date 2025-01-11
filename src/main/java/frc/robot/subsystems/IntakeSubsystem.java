@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.revrobotics.CANSparkBase.ControlType;
 
-//This SubSystem would act as an intake SubSytem with Current Limiting
+//This SubSystem will act as an intake SubSytem with Current Limiting
 
 public class IntakeSubsystem extends SubsystemBase {
   /** Creates a new subsystem. */
@@ -20,60 +20,42 @@ public class IntakeSubsystem extends SubsystemBase {
   private static IntakeSubsystem instance;
   
     // Initialize motor
-    private CANSparkMax IntakeMotor1 = new CANSparkMax(Constants.NeoConstants.kNeoMotor1CanId, MotorType.kBrushless);
-    private RelativeEncoder neoEncoder1 = neoMotor1.getEncoder();
+    private CANSparkMax IntakeMotor = new CANSparkMax(Constants.IntakeConstants.kIntakeMotorCanId, MotorType.kBrushless);
+    private RelativeEncoder IntakeEncoder = IntakeMotor.getEncoder();
 
-    private CANSparkMax IntakeMotor2 = new CANSparkMax(Constants.NeoConstants.kNeoMotor2CanId, MotorType.kBrushless);
-    private RelativeEncoder neoEncoder2 = neoMotor2.getEncoder();
+
 
     private float neospeed = 0.30f;
 
-    public NeoSubsystem(){
-      neoMotor1.restoreFactoryDefaults();
-      neoMotor1.setInverted(false);
-      neoMotor1.setIdleMode(Constants.NeoConstants.kNeoIdleMode);
-      neoMotor1.setSmartCurrentLimit(30);
-      neoMotor1.enableVoltageCompensation(12.0);
-      neoMotor1.burnFlash();
+    public IntakeSubsystem(){
+      IntakeMotor.restoreFactoryDefaults();
+      IntakeMotor.setInverted(false);
+      IntakeMotor.setIdleMode(Constants.IntakeConstants.kIntakeIdleMode);
+      IntakeMotor.setSmartCurrentLimit(30);
+      IntakeMotor.enableVoltageCompensation(12.0);
+      IntakeMotor.burnFlash();
 
-      neoEncoder1.setPosition(0);
+      IntakeEncoder.setPosition(0);
 
-      neoMotor2.restoreFactoryDefaults();
-      neoMotor2.setInverted(false);
-      neoMotor2.setIdleMode(Constants.NeoConstants.kNeoIdleMode);
-      neoMotor2.setSmartCurrentLimit(30);
-      neoMotor2.enableVoltageCompensation(12.0);
-      neoMotor2.burnFlash();
-
-      neoEncoder2.setPosition(0);
     }
   
 
 
-  // Spin motor1 forward
-  public void startneoMotor1(){
-    neoMotor1.set(neospeed);
+  // Spin IntakeMotor forward
+  public void startInatkeMotor(){
+    IntakeMotor.set(neospeed);
   }
 
 
-  // Spin motor2 forward
-  public void startneoMotor2(){
-    neoMotor2.set(neospeed);
+  // Stop IntakeMotor
+  public void stopIntakeMotor1(){
+    IntakeMotor.set(0.0);
   }
 
-  // Stop Neo motor1
-  public void stopneoMotor1(){
-    neoMotor1.set(0.0);
-  }
-
-  //Stop Neo motor2
-  public void stopneoMotor2(){
-    neoMotor2.set(0.0);
-  }
 
  //Return Output Current
   public double getneoMotor1Current(){
-    return neoMotor1.getOutputCurrent();
+    return IntakeMotor.getOutputCurrent();
   }
 
   /**

@@ -4,20 +4,20 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.NeoSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
-
+import frc.robot.Constants;
 /** An example command that uses an example subsystem. */
-public class NeoCommand extends Command {
+public class ShooterCommand extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final NeoSubsystem m_subsystem;
+  private final ShooterSubsystem m_subsystem;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public NeoCommand(NeoSubsystem subsystem) {
+  public ShooterCommand(ShooterSubsystem subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
