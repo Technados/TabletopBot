@@ -7,9 +7,11 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.VictorCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.VictorSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -31,6 +33,7 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final IntakeSubsystem m_Intake = new IntakeSubsystem();
   private final ShooterSubsystem m_Shooter = new ShooterSubsystem();
+  private final VictorSubsystem m_Victor = new VictorSubsystem();
   //private final startneoMotor1 startneoMotor1Command = new StartneoMotor1(m_intake);
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
@@ -69,6 +72,15 @@ public class RobotContainer {
     new JoystickButton(m_driverController, Button.kX.value)
                                     .onTrue(new InstantCommand(() -> m_Shooter.startShooterMotor(), m_Shooter))
                                 .onFalse(new InstantCommand(() -> m_Shooter.stopShooterMotor(), m_Shooter));
+    
+    new JoystickButton(m_driverController, Button.kB.value)
+                                    .onTrue(new InstantCommand(() -> m_Victor.startVictorMotor1(), m_Victor))
+                                .onFalse(new InstantCommand(() -> m_Victor.stopVictorMotor1(), m_Victor));
+    
+    new JoystickButton(m_driverController, Button.kY.value)
+                                    .onTrue(new InstantCommand(() -> m_Victor.startVictorMotor2(), m_Victor))
+                                .onFalse(new InstantCommand(() -> m_Victor.stopVictorMotor2(), m_Victor));
+    
   }
 
   /**

@@ -4,32 +4,40 @@
 
 package frc.robot.commands;
 
+import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.VictorSubsystem;
+import frc.robot.Constants;
+/** An example command that uses an example subsystem. */
+public class ShooterCommand extends Command {
+  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  private final ShooterSubsystem m_subsystem;
 
-public class VictorCommand extends Command {
-    private final IntakeSubsystem m_intakeSubsystem;
-    private final double m_speed;
+  /**
+   * Creates a new ExampleCommand.
+   *
+   * @param subsystem The subsystem used by this command.
+   */
+  public ShooterCommand(ShooterSubsystem subsystem) {
+    m_subsystem = subsystem;
+    // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(subsystem);
+  }
 
-    public VictorCommand(VictorSubsystem VictorSubsystem, double speed) {
-        m_intakeSubsystem = intakeSubsystem;
-        m_speed = speed;
+  // Called when the command is initially scheduled.
+  @Override
+  public void initialize() {}
 
-        addRequirements(m_intakeSubsystem);  // Declare subsystem dependencies
-    }
+  // Called every time the scheduler runs while the command is scheduled.
+  @Override
+  public void execute() {}
 
-    @Override
-    public void execute() {
-        m_intakeSubsystem.runIntake(m_speed);
-    }
+  // Called once the command ends or is interrupted.
+  @Override
+  public void end(boolean interrupted) {}
 
-    @Override
-    public void end(boolean interrupted) {
-        m_intakeSubsystem.stopIntake();
-    }
-
-    @Override
-    public boolean isFinished() {
-        return false;  // Run until interrupted
-    }
+  // Returns true when the command should end.
+  @Override
+  public boolean isFinished() {
+    return false;
+  }
 }
