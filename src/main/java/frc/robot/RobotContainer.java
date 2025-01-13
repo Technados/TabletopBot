@@ -70,12 +70,15 @@ public class RobotContainer {
                                 .onFalse(new InstantCommand(() -> m_Intake.stopIntakeMotor1(), m_Intake));
 
     new JoystickButton(m_driverController, Button.kB.value)
-                                    .onTrue(new InstantCommand(() -> m_Shooter.startShooterMotor(), m_Shooter))
-                                .onFalse(new InstantCommand(() -> m_Shooter.stopShooterMotor(), m_Shooter));
-    
+        .onTrue(
+          new InstantCommand(() -> ShooterSubsystem.setTargetVelocity(500), m_Shooter)
+        )
+        .onFalse(
+          new InstantCommand(() -> ShooterSubsystem.stopShooterMotor(), m_Shooter)
+        );
     new JoystickButton(m_driverController, Button.kLeftBumper.value)
-                                    .onTrue(new InstantCommand(() -> m_Victor.startVictorMotor1(), m_Victor))
-                                .onFalse(new InstantCommand(() -> m_Victor.stopVictorMotor1(), m_Victor));
+                                    .whileTrue(new InstantCommand(() -> m_Victor.startVictorMotor1(), m_Victor))
+                                .whileFalse(new InstantCommand(() -> m_Victor.stopVictorMotor1(), m_Victor));
     
     new JoystickButton(m_driverController, Button.kRightBumper.value)
                                     .onTrue(new InstantCommand(() -> m_Victor.startVictorMotor2(), m_Victor))

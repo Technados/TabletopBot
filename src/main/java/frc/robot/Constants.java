@@ -27,6 +27,11 @@ public final class Constants {
     public static final int kShooterMotorCanId = 3;
     public static final IdleMode kShooterIdleMode = IdleMode.kBrake;}
   
+    public final class VictorConstants {
+      public static final int kVictorMotor1 = 1;
+      public static final int kVictorMotor2 = 2;
+  }
+  
 
 }
 

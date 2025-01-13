@@ -7,7 +7,6 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.revrobotics.CANSparkLowLevel.MotorType;
-
 import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -17,8 +16,8 @@ import frc.robot.Constants;
 public class VictorSubsystem extends SubsystemBase {
 
     // Victor SPX motor controller
-    private final VictorSPX VictorMotor1 = new VictorSPX(Constants.);
-     private final VictorSPX VictorMotor2 = new VictorSPX(Constants.);
+    private final VictorSPX VictorMotor1 = new VictorSPX(Constants.VictorConstants.kVictorMotor1);
+     private final VictorSPX VictorMotor2 = new VictorSPX(Constants.VictorConstants.kVictorMotor2);
      
 
     // Power Distribution panel for current monitoring
@@ -40,22 +39,22 @@ public class VictorSubsystem extends SubsystemBase {
      */
 
     public void startVictorMotor1() {
-      setVictorMotor1Speed(0.03); 
+      VictorMotor1.set(ControlMode.PercentOutput, 0.30); 
     }
 
     public void startVictorMotor2() {
-      setVictorMotor2Speed(0.03); 
+      VictorMotor2.set(ControlMode.PercentOutput, 0.30);
     }
 
      // Stops the motor by setting its output to zero.
   
     public void stopVictorMotor1() {
-        setVictorMotor1Speed(0);
+      VictorMotor1.set(ControlMode.PercentOutput, 0);
     }
 
     
     public void stopVictorMotor2() {
-        setVictorMotor2Speed(0);
+      VictorMotor2.set(ControlMode.PercentOutput, 0);
     }
 
    // @Override
